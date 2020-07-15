@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AC-TwitterClone</string>
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+
+    <!-- Change the following strings as required -->
+    <string name="back4app_app_id">vTronib0W3uVfpkriHRIXWUdxQJRIpDq2LpnsIJj</string>
+    <string name="back4app_client_key">es5uKlnpqe0P1v7BuyeIQCmtK36FXs2e7zqefIvT</string>
+    <string name="please_enter_your_username">Please Enter your Username ...</string>
+    <string name="please_enter_your_email_adress">Please Enter your Email adress...</string>
+    <string name="please_enter_your_password">Please Enter your Password ...</string>
+    <string name="please_re_enter_your_password">Please Re-Enter your Password ...</string>
+    <string name="pease_enter_whatsapp_phone">Pease Enter WhatsApp Phone...</string>
+    <string name="signup">SignUp</string>
+    <string name="login">LogIN</string>
+    <string name="todo">TODO</string>
+    <string name="ahmed_tharwat_devlopment">AHMED THARWAT DEVLOPMENT</string>
+    <string name="imgtwitterbackground">imgTwitterBackground</string>
+
+</resources>
