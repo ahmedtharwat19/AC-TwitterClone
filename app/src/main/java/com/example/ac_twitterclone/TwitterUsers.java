@@ -29,13 +29,14 @@ public class TwitterUsers extends AppCompatActivity implements AdapterView.OnIte
     private ListView lstView;
     private ArrayList<String> tUsers;
     private ArrayAdapter adapter;
+    private String followedUser = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_twitter_users);
 
-        setTitle("Users : ");
+        setTitle("Users List: ");
 
         FancyToast.makeText(TwitterUsers.this, "Welcome " + ParseUser.getCurrentUser().getUsername()
                 , FancyToast.LENGTH_LONG, FancyToast.INFO, true).show();
@@ -47,7 +48,7 @@ public class TwitterUsers extends AppCompatActivity implements AdapterView.OnIte
         lstView.setOnItemClickListener(this);
         try {
             ParseQuery<ParseUser> query = ParseUser.getQuery();
-            query.whereNotEqualTo("username", ParseUser.getCurrentUser());
+            query.whereNotEqualTo("username", ParseUser.getCurrentUser().getUsername());
             query.whereEqualTo("is_Moderator", false);
             query.findInBackground(new FindCallback<ParseUser>() {
                 @Override
@@ -60,7 +61,11 @@ public class TwitterUsers extends AppCompatActivity implements AdapterView.OnIte
                         for (String twitterUser : tUsers){
                             if (ParseUser.getCurrentUser().getList("fanOf") != null) {
                                 if (ParseUser.getCurrentUser().getList("fanOf").contains(twitterUser)) {
+                                    followedUser += twitterUser + "\n";
                                     lstView.setItemChecked(tUsers.indexOf(twitterUser), true);
+                                    FancyToast.makeText(TwitterUsers.this
+                                            ,ParseUser.getCurrentUser().getUsername() + " is Follwing :\n" + followedUser
+                                            ,FancyToast.LENGTH_SHORT,FancyToast.INFO,true).show();
                                 }
                             }
                         }
