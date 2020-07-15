@@ -58,8 +58,10 @@ public class TwitterUsers extends AppCompatActivity implements AdapterView.OnIte
                         }
                         lstView.setAdapter(adapter);
                         for (String twitterUser : tUsers){
-                            if (ParseUser.getCurrentUser().getList("fanOF").contains(twitterUser)){
-                                lstView.setItemChecked(tUsers.indexOf(twitterUser),true);
+                            if (ParseUser.getCurrentUser().getList("fanOf") != null) {
+                                if (ParseUser.getCurrentUser().getList("fanOF").contains(twitterUser)) {
+                                    lstView.setItemChecked(tUsers.indexOf(twitterUser), true);
+                                }
                             }
                         }
                     }
