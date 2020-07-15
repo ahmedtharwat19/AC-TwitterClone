@@ -7,9 +7,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -19,14 +17,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText edtEmailLogin, edtPasswordLogin;
     private Button btnLoginActivity, btnSignUpActivity;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         setTitle("LogIn : TwitterClone");
-
         edtEmailLogin = findViewById(R.id.edtEmailLogin);
         edtPasswordLogin = findViewById(R.id.edtPasswordLogin);
         edtPasswordLogin.setOnKeyListener(new View.OnKeyListener() {
@@ -49,7 +44,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             finish();
             transactionToMainActivity();
         }
-
     }
 
     @Override
@@ -57,7 +51,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         rootLayoutTapped(view);
         switch (view.getId()){
             case R.id.btnLoginActivity:
-
                 if (edtEmailLogin.getText().toString().equals("") ||
                         edtPasswordLogin.getText().toString().equals("")) {
                     FancyToast.makeText(LoginActivity.this, "Email, Password is required!" ,
@@ -78,7 +71,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         }
                     });
                 }
-
                 break;
             case R.id.btnSignUpActivity:
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
@@ -87,7 +79,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
-
 
     public void rootLayoutTapped(View view){
         try {

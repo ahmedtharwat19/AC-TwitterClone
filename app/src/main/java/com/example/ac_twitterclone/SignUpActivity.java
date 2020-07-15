@@ -148,8 +148,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             activityName = "ModeratorsActivity";
             resumeName = ModeratorsActivity.class.getCanonicalName();
         } else {
-            resumeName = MainActivity.class.getCanonicalName();
-            activityName = "MainActivity";
+//            resumeName = MainActivity.class.getCanonicalName();
+            resumeName = TwitterUsers.class.getCanonicalName();
+//            activityName = "MainActivity";
+            activityName = "TwitterUsers";
         }
         try {
             Class newClass = Class.forName(resumeName);
@@ -158,7 +160,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        FancyToast.makeText(SignUpActivity.this,activityName + ""
-                ,FancyToast.LENGTH_LONG,FancyToast.INFO,true).show();
+        FancyToast.makeText(SignUpActivity.this,activityName + "",FancyToast.LENGTH_LONG,FancyToast.INFO,true).show();
     }
 }

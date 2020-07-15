@@ -19,6 +19,7 @@ import com.parse.LogOutCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.util.ArrayList;
@@ -56,6 +57,11 @@ public class TwitterUsers extends AppCompatActivity implements AdapterView.OnIte
                             tUsers.add(twitterUser.getUsername());
                         }
                         lstView.setAdapter(adapter);
+                        for (String twitterUser : tUsers){
+                            if (ParseUser.getCurrentUser().getList("fanOF").contains(twitterUser)){
+                                lstView.setItemChecked(tUsers.indexOf(twitterUser),true);
+                            }
+                        }
                     }
                 }
             });
@@ -94,9 +100,23 @@ public class TwitterUsers extends AppCompatActivity implements AdapterView.OnIte
         if  (checkedTextView.isChecked()){
             FancyToast.makeText(TwitterUsers.this, tUsers.get(position) + " is now followed."
                     ,FancyToast.LENGTH_SHORT,FancyToast.INFO,true).show();
+            ParseUser.getCurrentUser().add("fanOF",tUsers.get(position));
         } else {
             FancyToast.makeText(TwitterUsers.this, tUsers.get(position) + " is now not followed."
                     ,FancyToast.LENGTH_SHORT,FancyToast.INFO,true).show();
+            ParseUser.getCurrentUser().getList("fanOF").remove(tUsers.get(position));
+            List currentUserFanOfList = ParseUser.getCurrentUser().getList("fanOf");
+            ParseUser.getCurrentUser().remove("fanOf");
+            ParseUser.getCurrentUser().put("fanOf",currentUserFanOfList);
         }
+        ParseUser.getCurrentUser().saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    FancyToast.makeText(TwitterUsers.this, "Saved."
+                            ,FancyToast.LENGTH_SHORT,FancyToast.SUCCESS,true).show();
+                }
+            }
+        });
     }
 }
