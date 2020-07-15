@@ -59,7 +59,7 @@ public class TwitterUsers extends AppCompatActivity implements AdapterView.OnIte
                         lstView.setAdapter(adapter);
                         for (String twitterUser : tUsers){
                             if (ParseUser.getCurrentUser().getList("fanOf") != null) {
-                                if (ParseUser.getCurrentUser().getList("fanOF").contains(twitterUser)) {
+                                if (ParseUser.getCurrentUser().getList("fanOf").contains(twitterUser)) {
                                     lstView.setItemChecked(tUsers.indexOf(twitterUser), true);
                                 }
                             }
@@ -102,11 +102,11 @@ public class TwitterUsers extends AppCompatActivity implements AdapterView.OnIte
         if  (checkedTextView.isChecked()){
             FancyToast.makeText(TwitterUsers.this, tUsers.get(position) + " is now followed."
                     ,FancyToast.LENGTH_SHORT,FancyToast.INFO,true).show();
-            ParseUser.getCurrentUser().add("fanOF",tUsers.get(position));
+            ParseUser.getCurrentUser().add("fanOf",tUsers.get(position));
         } else {
             FancyToast.makeText(TwitterUsers.this, tUsers.get(position) + " is now not followed."
                     ,FancyToast.LENGTH_SHORT,FancyToast.INFO,true).show();
-            ParseUser.getCurrentUser().getList("fanOF").remove(tUsers.get(position));
+            ParseUser.getCurrentUser().getList("fanOf").remove(tUsers.get(position));
             List currentUserFanOfList = ParseUser.getCurrentUser().getList("fanOf");
             ParseUser.getCurrentUser().remove("fanOf");
             ParseUser.getCurrentUser().put("fanOf",currentUserFanOfList);
