@@ -72,13 +72,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 } else {
                         String pwd2 = edtPassword2.getText().toString();
                         String pwd1 = edtPasswordSignUp.getText().toString();
-//                    edtPassword2.getText().toString() != edtPasswordSignUp.getText().toString()
-//                    boolean temp = true;
+
                     if (!pwd1.equals(pwd2)) {
                         FancyToast.makeText(this,"Password not match , Please Enter Match Password",FancyToast.LENGTH_SHORT,FancyToast.INFO,true).show();
                         finish();
-//                        temp = false;
-                        //return temp;
 
                     } else {
                         final ParseUser parseUser = new ParseUser();
@@ -86,11 +83,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                         parseUser.setUsername(edtUsernameSignUp.getText().toString());
                         parseUser.setPassword(edtPasswordSignUp.getText().toString());
                         parseUser.put("WhatsAppPhone",edtWhatsAppPhone.getText().toString());
-//                        parseUser.put("isStaff",true);
-//                        parseUser.put("isModerator",false);
-/*                        boolean isStaff = true;
-                        boolean isModerator = false;
-                        parseUser.put("isStaff", true);*/
+
                         parseUser.put("is_Moderator", false);
                         parseUser.saveInBackground();
 
